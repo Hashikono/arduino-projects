@@ -1,7 +1,7 @@
 //PORTS: MAIN LED | SENSOR | REGULAR LED
-const int red = [10,A0,3];
-const int green = [9,A1,5];
-const int blue = [11,A2,6];
+const int red[] = {11,A2,3};
+const int green[] = {9,A1,5};
+const int blue[] = {10,A0,6};
 
 int r_value = 0;
 int g_value = 0;
