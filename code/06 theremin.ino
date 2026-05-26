@@ -1,5 +1,6 @@
-#include <Adafruit_LiquidCrystal.h>
-Adafruit_LiquidCrystal lcd_1(0);
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 //regular stuff
 int sensorValue;
@@ -24,9 +25,9 @@ void setup() {
     }
     
     digitalWrite(ledPin, LOW);
-    lcd_1.begin(16, 2);
-    lcd_1.print("value ");
-    lcd_1.setBacklight(1);
+    lcd.init();
+    lcd.print("value ");
+    lcd.backlight();
 }
 
 void loop() {
@@ -35,8 +36,8 @@ void loop() {
     tone(8, pitch, 20);
     
     //display
-    lcd_1.setCursor(6, 0);
-    lcd_1.print(sensorValue);
+    lcd.setCursor(6, 0);
+    lcd.print(sensorValue);
     delay(10);
 }
 

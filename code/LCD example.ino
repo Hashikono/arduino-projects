@@ -18,7 +18,8 @@ void loop()
     // sets cursor to the second row
     lcd_1.setCursor(0, 1);
 
-    // backlight setting
+    // backlight setting (off/on)
+    lcd_1.setBacklight(0);
     lcd_1.setBacklight(1);
 }
 
@@ -44,7 +45,8 @@ void loop()
     // sets cursor to the first row
     lcd.setCursor(0, 0);
     
-    // backlight setting
+    // backlight setting (off/on)
+    lcd.noBacklight();
     lcd.backlight();
 }
 
