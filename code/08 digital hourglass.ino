@@ -1,5 +1,6 @@
-#include <Adafruit_LiquidCrystal.h>
-Adafruit_LiquidCrystal lcd_1(0);
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 const int switchPin = 8;
 unsigned long previousTime = 0;
@@ -9,9 +10,9 @@ int led = 2;
 long interval = 1000;
 
 void setup() {
-    lcd_1.begin(16, 2);
-    lcd_1.print("timee ");
-    lcd_1.setBacklight(1);
+    lcd.init();
+    lcd.print("timee ");
+    lcd.backlight();
 
     for(int x = 2;x<8;x++){
         pinMode(x, OUTPUT);
@@ -37,8 +38,8 @@ void loop(){
     }
     prevSwitchState = switchState;
 
-    lcd_1.setCursor(6, 0);
-    lcd_1.print(currentTime);
+    lcd.setCursor(6, 0);
+    lcd.print(currentTime);
 }
 
 
