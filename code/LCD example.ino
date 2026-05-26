@@ -1,24 +1,51 @@
-// C++ code
-//
+//---------------------- TINKERCAD ----------------------
+
+// STANDARD IMPORTS
 #include <Adafruit_LiquidCrystal.h>
-
-int seconds = 0;
-
 Adafruit_LiquidCrystal lcd_1(0);
 
 void setup()
 {
-  lcd_1.begin(16, 2);
-  lcd_1.print("hello world");
+    // initialization function
+    lcd_1.begin(16, 2);
+
+    // printing
+    lcd_1.print("hello world");
 }
 
 void loop()
 {
-  lcd_1.setCursor(0, 1);
-  lcd_1.print(seconds);
-  lcd_1.setBacklight(1);
-  delay(5); // Wait for 500 millisecond(s)
-  lcd_1.setBacklight(0);
-  delay(5); // Wait for 500 millisecond(s)
-  seconds += 1;
+    // sets cursor to the second row
+    lcd_1.setCursor(0, 1);
+
+    // backlight setting
+    lcd_1.setBacklight(1);
 }
+
+
+//---------------------- IN REAL LIFE ----------------------
+
+// STANDARD IMPORTS
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup() 
+{
+    // initialization function
+    lcd.init();
+
+    // printing
+    lcd.print("hello world");
+}
+
+void loop()
+{
+    // sets cursor to the first row
+    lcd.setCursor(0, 0);
+    
+    // backlight setting
+    lcd.backlight();
+}
+
+
